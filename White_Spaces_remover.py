@@ -1,5 +1,13 @@
 # White Spaces Remover
+'''
+People Generally create files with white spaces in their names and it creates a hassle if you're in CS department to actually type space
+at each file name as it is not supported in most of the platforms.
+So I created this script to batch rename my files to reduce the hassle of renaming each file individually and let the program do our job for us.
 
+Instruction:
+Copy the program to where ever you want to rename the files on your system and execute the program using python3 and
+your files will be renamed to replace the white spaces with underscore
+'''
 import os
 import sys
 
