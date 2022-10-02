@@ -7,18 +7,14 @@ def createFolders(sep = '-'):
     name = ""
     folders = []
     # finding folder names
-    for dir in os.listdir():
-        for d in dir:
-            if d == sep:
-                folders.append(name)
-                name = ""
-                break
-            else:
-                name+=d
-    folders = set(folders)
+    for file in os.listdir():
+        file = file.split(sep)
+        if not os.path.exists(file[0]):
+            folders.append(file[0])
+    folders = list(set(folders))
     # creating folders
-    for f in folders:
-        os.system(f"mkdir {f}")
+    for folder in folders:
+        os.mkdir(folder)
     return folders
 
 def file_sorter(folders, files):
@@ -34,6 +30,5 @@ if __name__ == '__main__':
     directory = input("Enter directory path: ")
     os.chdir(directory)
     original_files = os.listdir()
-    folders = createFolders(seperator = input("Enter the sepearator: "))
+    folders = createFolders(sep = input("Enter the sepearator: "))
     file_sorter(folders, original_files)
-    
