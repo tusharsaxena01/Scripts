@@ -3,12 +3,14 @@
 INSTANDER DOWNLOADS SORTER
 --------------------------
 '''
-def createFolders(sep = '-'):
-    name = ""
+import os
+
+
+def createFolders(seperator='-') -> list:
     folders = []
     # finding folder names
     for file in os.listdir():
-        file = file.split(sep)
+        file = file.split(seperator)
         if not os.path.exists(file[0]):
             folders.append(file[0])
     folders = list(set(folders))
@@ -17,18 +19,19 @@ def createFolders(sep = '-'):
         os.mkdir(folder)
     return folders
 
-def file_sorter(folders, files):
+
+def file_sorter(folders: list, files: list) -> None:
     for folder in folders:
         for file in files:
             if file.startswith(folder):
                 os.system(f"move {file} {folder}/{file}")
-        print(folder)
-        
-        
+        print(f"{folder} completed")
+
+
 if __name__ == '__main__':
-    import os
     directory = input("Enter directory path: ")
     os.chdir(directory)
     original_files = os.listdir()
-    folders = createFolders(sep = input("Enter the sepearator: "))
+    sep = input("Enter the separator: ")
+    folders = createFolders(sep if sep else '-')
     file_sorter(folders, original_files)

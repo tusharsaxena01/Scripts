@@ -1,0 +1,8 @@
+# ide
+.idea
+.code
+.vcode
+
+
+# Python environment
+venv
